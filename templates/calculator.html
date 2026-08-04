@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dose Calculator</title>
+    <link rel="icon" type="image/jpeg" href="/templates/radioactive-icon.jpg">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="brand" href="/">
+                <div class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM144 320L208.3 320C217 320 224 312.9 225.6 304.4C230 280 243.7 258.9 262.8 244.7C270.2 239.2 273.4 229.1 268.8 221.1L236.3 164.8C232 157.3 222.4 154.5 215.1 159.3C166.9 190.8 133.8 243.5 128.8 304.1C128.1 312.9 135.3 320.1 144.1 320.1zM281.9 409.8C273.4 406.1 263.1 408.4 258.4 416.4L227.4 470.2C223.1 477.7 225.5 487.4 233.2 491.3C259.3 504.5 288.7 512 320 512C351.3 512 380.7 504.5 406.8 491.3C414.5 487.4 416.9 477.7 412.6 470.2L381.6 416.4C377 408.4 366.6 406.1 358.1 409.8C346.4 414.8 333.6 417.6 320 417.6C306.4 417.6 293.6 414.8 281.9 409.8zM414.4 304.4C416 313 422.9 320 431.7 320L496 320C504.8 320 512.1 312.8 511.3 304C506.3 243.4 473.2 190.8 425 159.2C417.7 154.4 408.2 157.2 403.8 164.7L371.3 221C366.7 229 369.9 239.1 377.3 244.6C396.4 258.8 410 280 414.5 304.3zM320 369.7C346.5 369.7 368 348.2 368 321.7C368 295.2 346.5 273.7 320 273.7C293.5 273.7 272 295.2 272 321.7C272 348.2 293.5 369.7 320 369.7z"/></svg></div>
+                <span>Chest X-Ray Dose Calculator<small>Estimate · Analyze · Protect</small></span>
+            </a>
+            <div class="nav-links"><a href="/">Home</a><a class="active" href="/calculator">Dose Calculator</a><a href="/history">History</a><a href="/about">About</a></div>
+        </nav>
+    </header>
+    <main>
+        <section class="page-title">
+            <div class="section">
+                <h1>Dose Calculator</h1>
+                <p>Enter patient and exposure details. The calculator estimates entrance surface dose and stores the result in the history database.</p>
+            </div>
+        </section>
+        <section class="section form-shell">
+            <div class="panel">
+                <form class="calculator-form" data-calculator-form>
+                    <label>Patient Name<input name="patient_name" required placeholder="e.g. Ada Okafor"></label>
+                    <label>Patient ID<input name="patient_id" required placeholder="e.g. RAD-001"></label>
+                    <label>Age<input name="age" type="number" min="1" max="130" required placeholder="35"></label>
+                    <label>Sex<select name="sex" required><option value="">Select sex</option><option>Female</option><option>Male</option><option>Other</option></select></label>
+                    <label>Chest X-ray Type<select name="xray_type" required><option value="PA">PA</option><option value="AP">AP</option></select></label>
+                    <label>kVp<input name="kvp" type="number" min="1" step="0.1" required placeholder="110"></label>
+                    <label>mAs<input name="mas" type="number" min="0.01" step="0.01" required placeholder="2.5"></label>
+                    <label>Focus-to-Skin Distance, FSD (cm)<input name="fsd" type="number" min="1" step="0.1" required placeholder="180"></label>
+                    <label>X-ray Machine Output (mGy/mAs)<input name="machine_output" type="number" min="0.0001" step="0.0001" required placeholder="0.05"></label>
+                    <label>Backscatter Factor, BSF<input name="bsf" type="number" min="0.01" step="0.01" required placeholder="1.35"></label>
+                    <div class="full form-actions">
+                        <button class="button" type="submit">Calculate Dose</button>
+                        <button class="button ghost" type="reset">Clear</button>
+                    </div>
+                    <p class="full error" data-error></p>
+                </form>
+            </div>
+            <aside class="panel">
+                <h2>Formula</h2>
+                <p class="hint">ESD = Output x mAs x (100 / FSD)<sup>2</sup> x BSF</p>
+                <p class="hint">Default DRL comparison values: PA chest 0.30 mGy, AP chest 0.40 mGy. These can be adjusted in <strong>app.py</strong> when your project reference value is finalized.</p>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="footer-inner"><strong>Chest X-Ray Dose Calculator</strong><div>Educational ESD estimation.</div></div></footer>
+    <script src="/static/app.js"></script>
+</body>
+</html>

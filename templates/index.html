@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chest X-Ray Dose Calculator</title>
+    <link rel="icon" type="image/jpeg" href="/templates/radioactive-icon.jpg">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="brand" href="/">
+                <div class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM144 320L208.3 320C217 320 224 312.9 225.6 304.4C230 280 243.7 258.9 262.8 244.7C270.2 239.2 273.4 229.1 268.8 221.1L236.3 164.8C232 157.3 222.4 154.5 215.1 159.3C166.9 190.8 133.8 243.5 128.8 304.1C128.1 312.9 135.3 320.1 144.1 320.1zM281.9 409.8C273.4 406.1 263.1 408.4 258.4 416.4L227.4 470.2C223.1 477.7 225.5 487.4 233.2 491.3C259.3 504.5 288.7 512 320 512C351.3 512 380.7 504.5 406.8 491.3C414.5 487.4 416.9 477.7 412.6 470.2L381.6 416.4C377 408.4 366.6 406.1 358.1 409.8C346.4 414.8 333.6 417.6 320 417.6C306.4 417.6 293.6 414.8 281.9 409.8zM414.4 304.4C416 313 422.9 320 431.7 320L496 320C504.8 320 512.1 312.8 511.3 304C506.3 243.4 473.2 190.8 425 159.2C417.7 154.4 408.2 157.2 403.8 164.7L371.3 221C366.7 229 369.9 239.1 377.3 244.6C396.4 258.8 410 280 414.5 304.3zM320 369.7C346.5 369.7 368 348.2 368 321.7C368 295.2 346.5 273.7 320 273.7C293.5 273.7 272 295.2 272 321.7C272 348.2 293.5 369.7 320 369.7z"/></svg></div>
+                <span>Chest X-Ray Dose Calculator<small>Estimate · Analyze · Protect</small></span>
+            </a>
+            <div class="nav-links">
+                <a class="active" href="/">Home</a>
+                <a href="/calculator">Dose Calculator</a>
+                <a href="/history">History</a>
+                <a href="/about">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <div>
+                    <h1>Web-Based Chest X-Ray Patient <span>Radiation Dose Calculator</span></h1>
+                    <p>Estimate entrance surface dose quickly using patient exposure parameters, compare with diagnostic reference levels, and generate a professional report.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="/calculator">☢ Calculate Dose</a>
+                        <a class="button secondary" href="/about">Learn More</a>
+                    </div>
+                </div>
+                <div class="xray-panel" aria-label="Chest x-ray illustration"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="feature-grid">
+                <article class="card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM144 320L208.3 320C217 320 224 312.9 225.6 304.4C230 280 243.7 258.9 262.8 244.7C270.2 239.2 273.4 229.1 268.8 221.1L236.3 164.8C232 157.3 222.4 154.5 215.1 159.3C166.9 190.8 133.8 243.5 128.8 304.1C128.1 312.9 135.3 320.1 144.1 320.1zM281.9 409.8C273.4 406.1 263.1 408.4 258.4 416.4L227.4 470.2C223.1 477.7 225.5 487.4 233.2 491.3C259.3 504.5 288.7 512 320 512C351.3 512 380.7 504.5 406.8 491.3C414.5 487.4 416.9 477.7 412.6 470.2L381.6 416.4C377 408.4 366.6 406.1 358.1 409.8C346.4 414.8 333.6 417.6 320 417.6C306.4 417.6 293.6 414.8 281.9 409.8zM414.4 304.4C416 313 422.9 320 431.7 320L496 320C504.8 320 512.1 312.8 511.3 304C506.3 243.4 473.2 190.8 425 159.2C417.7 154.4 408.2 157.2 403.8 164.7L371.3 221C366.7 229 369.9 239.1 377.3 244.6C396.4 258.8 410 280 414.5 304.3zM320 369.7C346.5 369.7 368 348.2 368 321.7C368 295.2 346.5 273.7 320 273.7C293.5 273.7 272 295.2 272 321.7C272 348.2 293.5 369.7 320 369.7z"/></svg></span><strong>Accurate Dose Calculation</strong><p>Calculate ESD using patient exposure factors and machine output.</p></article>
+                <article class="card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M192 80c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-352zM0 272c0-26.5 21.5-48 48-48l32 0c26.5 0 48 21.5 48 48l0 160c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48L0 272zM432 96l32 0c26.5 0 48 21.5 48 48l0 288c0 26.5-21.5 48-48 48l-32 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48z"/></svg></span><strong>DRL Comparison</strong><p>Compare each dose result with a recommended reference level.</p></article>
+                <article class="card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M288 64c106 0 192 86 192 192S394 448 288 448c-65.2 0-122.9-32.5-157.6-82.3-10.1-14.5-30.1-18-44.6-7.9s-18 30.1-7.9 44.6C124.1 468.6 201 512 288 512 429.4 512 544 397.4 544 256S429.4 0 288 0C202.3 0 126.5 42.1 80 106.7L80 80c0-17.7-14.3-32-32-32S16 62.3 16 80l0 112c0 17.7 14.3 32 32 32l24.6 0c.5 0 1 0 1.5 0l86 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-38.3 0C154.9 102.6 217 64 288 64zm24 88c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65 0-94.1z"/></svg></span><strong>Calculation History</strong><p>View and manage previous calculations for easy reference.</p></article>
+                <article class="card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l80 0 0-112c0-35.3 28.7-64 64-64l176 0 0-165.5c0-17-6.7-33.3-18.7-45.3L290.7 18.7C278.7 6.7 262.5 0 245.5 0L96 0zM357.5 176L264 176c-13.3 0-24-10.7-24-24L240 58.5 357.5 176zM240 380c-11 0-20 9-20 20l0 128c0 11 9 20 20 20s20-9 20-20l0-28 12 0c33.1 0 60-26.9 60-60s-26.9-60-60-60l-32 0zm32 80l-12 0 0-40 12 0c11 0 20 9 20 20s-9 20-20 20zm96-80c-11 0-20 9-20 20l0 128c0 11 9 20 20 20l32 0c28.7 0 52-23.3 52-52l0-64c0-28.7-23.3-52-52-52l-32 0zm20 128l0-88 12 0c6.6 0 12 5.4 12 12l0 64c0 6.6-5.4 12-12 12l-12 0zm88-108l0 128c0 11 9 20 20 20s20-9 20-20l0-44 28 0c11 0 20-9 20-20s-9-20-20-20l-28 0 0-24 28 0c11 0 20-9 20-20s-9-20-20-20l-48 0c-11 0-20 9-20 20z"/></svg></span><strong>PDF Reports</strong><p>Generate downloadable patient radiation dose reports instantly.</p></article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="workflow">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div><span class="step-number">1</span><strong>Enter Data</strong><p>Input patient and exposure parameters.</p></div>
+                    <div><span class="step-number">2</span><strong>Calculate</strong><p>Process the dose estimate automatically.</p></div>
+                    <div><span class="step-number">3</span><strong>View Results</strong><p>See ESD and DRL comparison.</p></div>
+                    <div><span class="step-number">4</span><strong>Download PDF</strong><p>Save or print the report.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Why Use This System?</h2>
+            <div class="info-grid">
+                <article class="card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M0 256L28.5 28c2-16 15.6-28 31.8-28L228.9 0c15 0 27.1 12.1 27.1 27.1 0 3.2-.6 6.5-1.7 9.5L208 160 347.3 160c20.2 0 36.7 16.4 36.7 36.7 0 7.4-2.2 14.6-6.4 20.7l-192.2 281c-5.9 8.6-15.6 13.7-25.9 13.7l-2.9 0c-15.7 0-28.5-12.8-28.5-28.5 0-2.3 .3-4.6 .9-6.9L176 288 32 288c-17.7 0-32-14.3-32-32z"/></svg></div><strong>Saves Time</strong><p>Instant results without manual calculations.</p></article>
+                <article class="card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Pro v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc.--><path d="M96 32C78.3 32 64 46.3 64 64S78.3 96 96 96L114.7 96 9.4 201.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.3 160 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32L96 32zM403.8 70.1a38.1 38.1 0 1 0 76.2 0 38.1 38.1 0 1 0 -76.2 0zM279.7 194.2a38.1 38.1 0 1 0 76.2 0 38.1 38.1 0 1 0 -76.2 0zm162.2-38.1a38.1 38.1 0 1 0 0 76.2 38.1 38.1 0 1 0 0-76.2zM156.2 317.8a38.1 38.1 0 1 0 76.2 0 38.1 38.1 0 1 0 -76.2 0zm161.6-38.1a38.1 38.1 0 1 0 0 76.2 38.1 38.1 0 1 0 0-76.2zm86.1 38.1a38.1 38.1 0 1 0 76.2 0 38.1 38.1 0 1 0 -76.2 0zM70.1 403.8a38.1 38.1 0 1 0 0 76.2 38.1 38.1 0 1 0 0-76.2zm86.1 38.1a38.1 38.1 0 1 0 76.2 0 38.1 38.1 0 1 0 -76.2 0zm161.6-38.1a38.1 38.1 0 1 0 0 76.2 38.1 38.1 0 1 0 0-76.2zm86.1 38.1a38.1 38.1 0 1 0 76.2 0 38.1 38.1 0 1 0 -76.2 0z"/></svg></div><strong>Ensures Safety</strong><p>Helps monitor dose and radiation protection practice.</p></article>
+                <article class="card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M48 195.8l209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1C309 34.1 298.6 32 288 32s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160L0 456c0 13.3 10.7 24 24 24s24-10.7 24-24l0-260.2zm48 71.7L96 384c0 53 86 96 192 96s192-43 192-96l0-116.6-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg></div><strong>Educational Tool</strong><p>Supports radiography training and learning.</p></article>
+                <article class="card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l251.5 0C261 469.4 240 414.5 240 356.4l0-31.1c0-7.3 1-14.5 2.9-21.3l-48.6 0zm251 184.5l-13.3 6.3 0-188.1 96 32 0 19.6c0 55.8-32.2 106.5-82.7 130.3zM421.9 259.5l-112 37.3c-13.1 4.4-21.9 16.6-21.9 30.4l0 31.1c0 74.4 43 142.1 110.2 173.7l18.5 8.7c4.8 2.2 10 3.4 15.2 3.4s10.5-1.2 15.2-3.4l18.5-8.7C533 500.3 576 432.6 576 358.2l0-31.1c0-13.8-8.8-26-21.9-30.4l-112-37.3c-6.6-2.2-13.7-2.2-20.2 0z"/></svg></div><strong>Quality Assurance</strong><p>Supports compliance with reference standards.</p></article>
+                <article class="card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Pro v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0L213.5 0c17 0 33.3 6.7 45.3 18.7L365.3 125.3c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm208-5.5l0 93.5c0 13.3 10.7 24 24 24L325.5 176 208 58.5zM120 256c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-144 0z"/></svg></div><strong>Reports</strong><p>Save patient dose records for documentation.</p></article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="cta-band">
+                <div>
+                    <h2>Ready to Estimate a Patient's Radiation Dose?</h2>
+                    <p>Start your calculation and keep a clear record of the result.</p>
+                </div>
+                <a class="button" href="/calculator">Start Calculation →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div><strong>Chest X-Ray Dose Calculator</strong><p class="muted">A web-based ESD estimation tool for chest X-ray examinations.</p></div>
+            <div>Built for radiography education.</div>
+        </div>
+    </footer>
+</body>
+</html>
