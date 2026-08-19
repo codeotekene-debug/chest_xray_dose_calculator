@@ -1,10 +1,13 @@
+import io
 import os
 import sqlite3
 from datetime import datetime
 from functools import wraps
 from pathlib import Path
-from flask import Flask, render_template, request, jsonify, url_for, g, abort, session, redirect
+from flask import Flask, render_template, request, jsonify, url_for, g, abort, session, redirect, send_file
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from pdf_report import generate_report_pdf
 
 BASE_DIR = Path(__file__).resolve().parent
 DATABASE = BASE_DIR / "history.db"
@@ -257,6 +260,52 @@ def results():
         drl_limit=drl_limit,
         status=status,
         badge_class=badge_class,
+    )
+
+
+@app.route("/report.pdf")
+@login_required
+def report_pdf():
+    record_id = request.args.get("id", type=int)
+    if record_id is None:
+        abort(400, description="Missing record id.")
+
+    db = get_db()
+    user_id = g.user["id"] if g.user is not None else None
+    if user_id is None:
+        abort(403, description="Not authorized.")
+
+    row = db.execute(
+        "SELECT * FROM calculations WHERE id = ? AND user_id = ?",
+        (record_id, user_id),
+    ).fetchone()
+
+    if row is None:
+        abort(404, description="Record not found.")
+
+    record = {
+        "record_id": row["id"],
+        "created_at": row["created_at"],
+        "patient_name": row["patient_name"],
+        "patient_id": row["patient_id"],
+        "age": row["age"],
+        "sex": row["sex"],
+        "xray_type": row["xray_type"],
+        "kvp": row["kvp"],
+        "mas": row["mas"],
+        "fsd": row["fsd"],
+        "machine_output": row["machine_output"],
+        "bsf": row["bsf"],
+        "esd_mgy": row["esd_mgy"],
+        "drl_limit": DRL_LIMITS.get(row["xray_type"], 0.40),
+        "status": row["status"],
+    }
+    pdf_bytes = generate_report_pdf(record)
+    return send_file(
+        io.BytesIO(pdf_bytes),
+        mimetype="application/pdf",
+        as_attachment=True,
+        download_name=f"chest_xray_report_{record_id}.pdf",
     )
 
 
